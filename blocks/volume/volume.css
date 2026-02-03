@@ -1,0 +1,52 @@
+/* block wrapper */
+.volume {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 320px;
+}
+
+/* slider row */
+.volume-slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* icon */
+.volume-icon {
+  font-size: 18px;
+}
+
+/* slider */
+.volume input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+}
+
+/* track */
+.volume input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: #ddd;
+  border-radius: 10px;
+}
+
+/* thumb */
+.volume input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: #ff3f6c;
+  margin-top: -4px;
+}
+
+.volume-value {
+  font-weight: 600;
+  min-width: 42px;
+}
