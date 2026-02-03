@@ -1,30 +1,27 @@
-/**
- * EDS Block Script
- * Runs automatically when the block loads
- * `block` = the .volume div (root element)
- */
-
 export default function decorate(block) {
 
-  // 🎯 Grab elements inside THIS block only
-  // (scoped queries = best practice in EDS)
+  // 🎯 Inject HTML dynamically (EDS style)
+  block.innerHTML = `
+    <div class="volume-wrapper">
+      <audio src="/media/sample.mp3" controls></audio>
+
+      <div class="volume-slider-wrapper">
+        <span class="volume-icon">🔊</span>
+        <input type="range" min="0" max="100" value="70" step="1">
+        <span class="volume-value">70%</span>
+      </div>
+    </div>
+  `;
+
   const audio = block.querySelector('audio');
-  const slider = block.querySelector('input[type="range"]');
+  const slider = block.querySelector('input');
   const valueText = block.querySelector('.volume-value');
 
+  audio.volume = 0.7;
 
-  // ===== Set default =====
-  audio.volume = slider.value / 100;
-
-
-  // ===== Slider change =====
   slider.addEventListener('input', () => {
     const volume = slider.value;
-
     valueText.textContent = volume + '%';
-
-    // HTML audio expects 0 → 1
     audio.volume = volume / 100;
   });
-
 }

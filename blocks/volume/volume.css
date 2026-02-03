@@ -1,10 +1,16 @@
 /* block wrapper */
-.volume {
+/* .volume {
   display: flex;
   flex-direction: column;
   gap: 14px;
   max-width: 320px;
+} */
+
+.volume {
+  display: block;
+  padding: 16px;
 }
+
 
 /* slider row */
 .volume-slider-wrapper {
