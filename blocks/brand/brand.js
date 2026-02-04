@@ -1,17 +1,21 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-  /* change to ul, li */
   const ul = document.createElement('div');
+  ul.className = 'brands-grid';
   [...block.children].forEach((row) => {
-    const li = document.createElement('p');
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'brand';
-      else div.className = 'brand';
+    [...row.children].forEach((card) => {
+      card.className = 'brand-card';
+      ul.append(card);
     });
-    ul.append(li);
   });
-  ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
+  ul.querySelectorAll('picture > img').forEach((img) => {
+    const newPic = createOptimizedPicture(img.src, img.alt, false);
+    const newImg = newPic.querySelector('img');
+    newImg.width = img.width;
+    newImg.height = img.height;
+    newImg.className = 'brand-image';
+    img.closest('picture').replaceWith(newPic);
+  });
   block.replaceChildren(ul);
 }
