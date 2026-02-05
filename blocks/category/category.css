@@ -1,0 +1,55 @@
+/* Container styling */
+.category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  /* Default: 2 columns for mobile */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Card Styling */
+.category .category-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.category .category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Image styling */
+.category .category-card picture img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Keeps images as square cards */
+  object-fit: cover;
+  display: block;
+}
+
+/* Text styling */
+.category .category-card-text {
+  padding: 12px;
+  text-align: center;
+}
+
+.category .category-card-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Desktop: 5 categories in a row */
+@media (min-width: 900px) {
+  .category ul {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+}
